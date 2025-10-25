@@ -1,5 +1,27 @@
-<Body>
-    <h1 style="color:brown" font-family="san-serif"> Data Inserted</h1>
-</Body>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Data</title>
+    <link href="{% static 'sqlapp/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h1>Student List</h1>
+    <table border="1">
+       <tr>
+        <th>Fistname</th>
+        <th>Lastname</th>
+        <th> email </th>
+        <th> Contact</th>
+       </tr>  
+       {% for stud in students %}
+       <tr>
+            <td> {{ stud.firstname }}</td>
+            <td> {{ stud.lastname }}</td>
+            <td> {{ stud.email }}</td>
+            <td> {{ stud.contact }}</td>            
+       </tr>
+       {% endfor %}
 
+    </table>
 

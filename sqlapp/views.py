@@ -10,8 +10,12 @@ def InsertData(request): #Data comes from html to view
     email= request.POST["email"]
     contact= request.POST["contact"]
 
-    # creating object of Model class -- Insertingdata into table
+    # creating object of Model class -- Inserting data into table
     newuser= Student.objects.create(firstname=fname, lastname=lname, email=email, contact=contact)
 
     #after inserting data show on show.html
     return render(request,"sqlapp/show.html")
+
+def FetchData(request):
+    data = Student.objects.all()
+    return render (request, "sqlapp/show.html", {'students': data })
