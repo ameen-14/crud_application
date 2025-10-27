@@ -13,13 +13,26 @@
         <th>Lastname</th>
         <th> email </th>
         <th> Contact</th>
+        <th>Edit</th>
+        <th>Delete</th>
        </tr>  
        {% for stud in students %}
-       <tr>
+       <tr>            
             <td> {{ stud.firstname }}</td>
             <td> {{ stud.lastname }}</td>
             <td> {{ stud.email }}</td>
             <td> {{ stud.contact }}</td>            
+            <td> <form name="editform" action ="{%  url 'edit' pk=stud.id %}" method="post"> 
+                 {% csrf_token %}
+                 <input type="submit" value="Edit" name="edit"> 
+                </form>
+            </td>
+            <td> <form name="delete" action ="{% url 'delete' pk=stud.id %}" method="post"> 
+                {% csrf_token %}
+                <input type="submit" value="Delete" name="delete"> 
+                </form>
+            </td>
+
        </tr>
        {% endfor %}
 
